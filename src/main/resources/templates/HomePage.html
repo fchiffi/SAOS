@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Progetto Sicurezza nelle architetture orientate ai servizi - Home Page</title>
+
+<style>
+	body {margin:0;font-family:Arial}
+
+	.header {
+	  background-color: #71c7ec;
+	  padding: 10px;
+	  text-align: center;
+	}
+
+	.column {
+	  float: left;
+	  padding: 10px;
+	}
+	
+	/* Left and right column */
+	.column.side {
+	  width: 20%;
+	}
+
+	/* Middle column */
+	.column.middle {
+	  width: 60%;
+	}
+	
+	/* Clear floats after the columns */
+	.row:after {
+	  content: "";
+	  display: table;
+	  clear: both;
+	}
+
+	.topnav {
+	  overflow: hidden;
+	  background-color: #005073;
+	}
+	
+	.topnav a {
+	  float: left;
+	  display: block;
+	  color: #f2f2f2;
+	  text-align: center;
+	  padding: 14px 16px;
+	  text-decoration: none;
+	  font-size: 17px;
+	}
+
+	.active {
+	  background-color: #189ad3;
+	  color: white;
+	}
+	
+	.topnav .icon {
+	  display: none;
+	}
+	
+	.dropdown {
+	  float: left;
+	  overflow: hidden;
+	}
+
+	.dropdown .dropbtn {
+	  font-size: 17px;    
+	  border: none;
+	  outline: none;
+	  color: white;
+	  padding: 14px 16px;
+	  background-color: inherit;
+	  font-family: inherit;
+	  margin: 0;
+	}
+	
+	.dropdown-content {
+	  display: none;
+	  position: absolute;
+	  background-color: #f9f9f9;
+	  min-width: 160px;
+	  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	  z-index: 1;
+	}
+
+	.dropdown-content a {
+	  float: none;
+	  color: black;
+	  padding: 12px 16px;
+	  text-decoration: none;
+	  display: block;
+	  text-align: left;
+	}
+	
+	.topnav a:hover, .dropdown:hover .dropbtn {
+	  background-color: #107dac;
+	  color: white;
+	}
+	
+	.dropdown-content a:hover {
+	  background-color: #ddd;
+	  color: black;
+	}
+
+	.dropdown:hover .dropdown-content {
+	  display: block;
+	}
+	
+	@media screen and (max-width: 600px) {
+	  .topnav a:not(:first-child), .dropdown .dropbtn {
+	    display: none;
+	  }
+	  .topnav a.icon {
+	    float: right;
+	    display: block;
+	  }
+	}
+
+	@media screen and (max-width: 600px) {
+	
+		.topnav.responsive {position: relative;}
+	  	
+	  	.topnav.responsive .icon {
+	    	position: absolute;
+	    	right: 0;
+	    	top: 0;
+  		}
+  	
+		.topnav.responsive a {
+	   		float: none;
+	   		display: block;
+	   		text-align: left;
+		}
+	
+  		.topnav.responsive .dropdown {float: none;}
+  
+  		.topnav.responsive .dropdown-content {position: relative;}
+  
+ 	 	.topnav.responsive .dropdown .dropbtn {
+    		display: block;
+    		width: 100%;
+    		text-align: left;
+  		}
+	}
+	
+	/* style inputs and link buttons */
+	input,
+	.btn {
+	  /*width: 50%;*/
+	  padding: 8px;
+	  border: none;
+	  border-radius: 4px;
+	  margin: 5px 0;
+	  opacity: 0.85;
+	  display: inline-block;
+	  font-size: 17px;
+	  line-height: 15px;
+	  text-decoration: none; /* remove underline from anchors */
+	}
+
+	input:hover,
+	.btn:hover {
+	  opacity: 1;
+	}
+	
+	/* style the submit button */
+	input[type=submit] {
+	  background-color: #189ad3;
+	  color: white;
+	  cursor: pointer;
+	}
+
+	input[type=submit]:hover {
+	  background-color: #005073;
+	}
+	
+	/* style the submit button */
+	input[type=file] {
+	  background-color: #189ad3;
+	  color: white;
+	  cursor: pointer;
+	}
+
+	input[type=file]:hover {
+	  background-color: #005073;
+	}
+	
+	table {
+	  border-collapse: collapse;
+	  border-spacing: 0;
+	  width: 100%;
+	  border: 1px solid #ddd;
+	}
+
+	th, td {
+	  text-align: left;
+	  padding: 10px;
+	}
+	
+	tr:nth-child(even) {
+	  background-color: #f2f2f2;
+	}
+
+	.modal {
+	  display: none; /* Hidden by default */
+	  position: fixed; /* Stay in place */
+	  z-index: 1; /* Sit on top */
+	  padding-top: 100px; /* Location of the box */
+	  left: 0;
+	  top: 0;
+	  width: 100%; /* Full width */
+	  height: 100%; /* Full height */
+	  overflow: auto; /* Enable scroll if needed */
+	  background-color: rgb(0,0,0); /* Fallback color */
+	  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	}
+	
+	.modal-content {
+	  background-color: #fefefe;
+	  margin: auto;
+	  padding: 20px;
+	  border: 1px solid #888;
+	  width: 80%;
+	}
+
+	.close {
+	  color: #aaaaaa;
+	  float: right;
+	  font-size: 28px;
+	  font-weight: bold;
+	}
+	
+	.close:hover,
+	.close:focus {
+	  color: #000;
+	  text-decoration: none;
+	  cursor: pointer;
+	}
+	
+	.logout {
+
+    	text-align: center;
+	}
+
+</style>
+
+</head>
+
+<body>
+<div class="header">
+  <h1>Progetto Sicurezza nelle architetture orientate ai servizi
+   
+  
+  </h1>
+     </div>
+
+<div class="topnav" id="myTopnav">
+  <a href="#home" class="active">Home</a>
+
+  <div class="dropdown" style="float:right">
+    <button class="dropbtn">{{user}}
+    <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+	<div class="logout">
+   	 <form action="/logout" method="post">
+			<input type="hidden" name="{{_csrf.parameterName}}" value="{{_csrf.token}}">
+			<input type="submit" value="Logout">
+		</form>
+	</div>
+ 	
+    </div>
+  </div> 
+ 
+</div>
+
+<div class="row">
+	<div class="column side">
+</div>
+  
+<div class="column middle">
+
+    <h2>Libri</h2>
+
+	<table>
+		<tr>
+		    <th>Titolo</th>
+		    <th>Commento</th>
+		    <th>Data inserimento</th>
+			<th>Autore</th>
+			{{#notviewer}}
+			<th></th>
+			{{/notviewer}}
+		</tr>
+		{{#libri}}
+		<tr><td>{{LibroTitolo}}</td><td>{{LibroCommento}}</td><td>{{LibroDataCreazione}}</td><td>{{LibroUtenteNome}} {{LibroUtenteCognome}}</td>
+		{{#notviewer}}
+		<td>
+		{{#LibroId}}
+			<form action="delete/libro/{{LibroId}}" method="post">
+				<input type="hidden" name="{{_csrf.parameterName}}" value="{{_csrf.token}}">
+				<input type="submit" value="Elimina commento" >
+			</form>
+		{{/LibroId}}
+		</td>
+		{{/notviewer}}
+		</tr>
+		{{/libri}}
+	</table>
+
+
+{{#notviewer}}
+	<form action="/new_libro" method="post">
+		<table style="background-color: #f2f2f2;">
+			 <tr>
+			 	<td>
+			 		<h2>Nuovo libro</h2>
+			 	</td>
+			 </tr>
+			 <tr>
+			 	<td>
+			 		Titolo:
+			 	</td>
+			 	<td>
+			 		<input type="text" name="libroTitolo" required>
+			 	</td>
+			 </tr>	
+			 <tr>
+			 	<td>
+			 		Commento: 
+			 	</td>
+			 	<td>
+			 		<input type="text" name ="libroCommento">
+			 	</td>
+			 </tr>
+			 <tr>
+				<td>
+					<input type="hidden" name="{{_csrf.parameterName}}" value="{{_csrf.token}}">
+					<input type="submit" value="Inserisci commento" />
+				</td>
+			  </tr>
+		</table>
+	</form>
+{{/notviewer}}
+
+
+    
+</div>
+  
+<div class="column side">
+  </div>
+</div>
+
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+
+
+</script>
+
+
+</body>
+</html>
